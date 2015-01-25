@@ -1,0 +1,428 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+Here's where you can start getting into the good stuff.
+This size will work on iPads, other tablets, and desktops.
+So you can start working with more styles, background images,
+and other resources. You'll also notice the grid starts to
+come into play. Have fun!
+
+******************************************************************/
+
+
+/*********************
+GENERAL STYLES
+*********************/
+
+body {
+	// background: $light-gray url('../images/bg-pattern.png') repeat 0 0;
+	
+}
+
+/* // ANIMATIONS // */
+
+@-webkit-keyframes spin-in {
+	from {
+		opacity: 0;
+		-webkit-transform: translate(0);
+	}
+	to {
+		opacity: 1;
+		-webkit-transform: translate(50%, 0);
+	}
+}
+@keyframes spin-in {
+	from {
+		opacity: 0;
+		transform: translate(0);
+	}
+	to {
+		opacity: 1;
+		transform: translate(50%, 0);
+	}
+}
+
+@-webkit-keyframes swing-in {
+	0% {
+		-webkit-transform: rotateY(90deg);
+	} 
+	65% {
+		-webkit-transform: rotateY(-30deg);
+	}
+	80% {
+		-webkit-transform: rotateY(10deg);
+	}
+	100% {
+		-webkit-transform: rotateY(0deg);
+	}
+}
+@keyframes swing-in {
+	0% {
+		transform: rotateY(90deg);
+	} 
+	65% {
+		transform: rotateY(-30deg);
+	}
+	80% {
+		transform: rotateY(10deg);
+	}
+	100% {
+		transform: rotateY(0deg);
+	}
+}
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+.wrap {
+	width: 760px;
+	-webkit-perspective: 1000px;
+	perspective: 1000px;
+}
+
+.page #main {
+	/*
+background-color: $white;
+	border: 1px solid #aaa;
+*/
+}
+
+/*********************
+HEADER STYLES
+*********************/
+
+.header {
+	margin: 0 0 4em;
+	position: relative;
+	
+	nav {
+		width: 100%;
+		background:$black;
+		z-index: 3000;
+		position: relative;
+		
+		ul {
+			float: right;
+			
+			li {
+				a {
+					display: block;
+				}
+			}
+		}
+	} 
+}
+
+/*********************
+NAVIGATION STYLES
+*********************/
+#logo {
+	width: 180px;
+	height: auto;
+	position: absolute;
+	top: 12px;
+	left: 36px;
+	z-index: 4000;
+	opacity: 1;
+}
+.main-nav {
+	li {
+		a {
+			min-height: 54px;
+			padding: 0.8em 1.4em 0.75em;
+		}
+	}
+}
+.social {
+	width: auto;
+	background: $gray;
+	
+	ul {
+		margin: 0;
+		padding: 0.4em 0;
+	}
+}
+.nav {
+	border: 0;
+	position: relative;
+	
+	li {
+		float: left;
+		position: relative;
+		position: relative;
+
+		a {
+			border-bottom: 0;
+			position: relative;
+			z-index: 3000;
+			transition: all 0.2s ease-in-out;
+
+			/*
+			you can use hover styles here even though this size
+			has the possibility of being a mobile device.
+			*/
+			&:hover, &:focus {
+				color: $white;
+				background-color: $blue;
+				text-decoration: none;
+				box-shadow: inset 0 -4px 0 $dark-blue;
+				
+				span {
+					box-shadow: inset 0 4px 0 $dark-blue;
+				}
+			}
+		}
+		span {
+			z-index: 30;
+			transition: all 0.2s ease-in-out;
+		}
+
+		&:first-child {}
+		&:last-child {}
+
+		/* showing sub-menus */
+		/*
+&:hover > ul {
+			top: auto;
+			visibility:visible;
+		}
+*/
+
+	} /* end .menu ul li */
+	
+	li:hover {
+		.add-on {
+			-webkit-animation: spin-in 0.5s ease-out 1 normal both;
+			animation: spin-in 0.5s ease-out 1 normal both;
+		}
+	}
+
+	/* highlight current page */
+	li.current-menu-item,
+	li.current_page_item,
+	li.current_page_ancestor {
+		a {}
+	}  /* end current highlighters */
+
+} /* end .nav */
+.add-on {
+	width: 220px;
+	padding: 0.6em 0 0;
+	opacity: 0;
+	position: absolute;
+	bottom: -33px;
+	right: 50%;
+	text-align: center;
+	box-shadow: 0 0 0 transparent;
+	color: #aaa;
+	font-style: italic;
+}
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+
+.sidebar {
+	margin-top: 2.2em;
+}
+
+	.widgettitle {
+		border-bottom: 2px solid #444;
+		margin-bottom: 0.75em;
+	}
+
+	.widget {
+		padding: 0 10px;
+		margin: 2.2em 0;
+
+		ul {
+			li {
+				margin-bottom: 0.75em;
+
+				&:first-child {}
+				&:last-child {}
+				a {}
+				/* deep nesting */
+
+				ul {
+					margin-top: 0.75em;
+					padding-left: 1em;
+				}
+			}
+		}
+	}
+
+
+	/* links widget */
+	.widget_links {}
+	.widget_links ul {}
+	.widget_links ul li {}
+	.widget_links ul li a {}
+
+	/* meta widget */
+	.widget_meta {}
+	.widget_meta ul {}
+	.widget_meta ul li {}
+	.widget_meta ul li a {}
+
+	/* pages widget */
+	.widget_pages {}
+	.widget_pages ul {}
+	.widget_pages ul li {}
+	.widget_pages ul li a {}
+
+	/* recent-posts widget */
+	.widget_recent_entries {}
+	.widget_recent_entries ul {}
+	.widget_recent_entries ul li {}
+	.widget_recent_entries ul li a {}
+
+	/* archives widget */
+	.widget_archive {}
+	.widget_archive ul {}
+	.widget_archive ul li {}
+	.widget_archive ul li a {}
+	.widget_archive select {}
+	.widget_archive option {}
+
+	/* tag-cloud widget */
+	.widget_links {}
+	.widget_links li:after {}
+	.widget_links li:before {}
+	.widget_tag_cloud {}
+	.widget_tag_cloud a {}
+	.widget_tag_cloud a:after {}
+	.widget_tag_cloud a:before {}
+
+	/* calendar widget */
+	.widget_calendar {}
+	#calendar_wrap {}
+	#calendar_wrap th {}
+	#calendar_wrap td {}
+	#wp-calendar tr td {}
+	#wp-calendar caption {}
+	#wp-calendar a {}
+	#wp-calendar #today {}
+	#wp-calendar #prev {}
+	#wp-calendar #next {}
+	#wp-calendar #next a {}
+	#wp-calendar #prev a {}
+
+	/* category widget */
+	.widget_categories {}
+	.widget_categories ul {}
+	.widget_categories ul li {}
+	.widget_categories ul ul.children {}
+	.widget_categories a {}
+	.widget_categories select{}
+	.widget_categories select#cat {}
+	.widget_categories select.postform {}
+	.widget_categories option {}
+	.widget_categories .level-0 {}
+	.widget_categories .level-1 {}
+	.widget_categories .level-2 {}
+	.widget_categories .level-3 {}
+
+	/* recent-comments widget */
+	.recentcomments {}
+	#recentcomments {}
+	#recentcomments li {}
+	#recentcomments li a {}
+	.widget_recent_comments {}
+
+	/* search widget */
+	#searchform {}
+	.widget_search {}
+	.screen-reader-text {}
+
+	/* text widget */
+	.textwidget {}
+	.widget_text {}
+	.textwidget p {}
+
+
+/*********************
+FOOTER STYLES
+*********************/
+
+/*
+you'll probably need to do quite a bit
+of overriding here if you styled them for
+mobile. Make sure to double check these!
+*/
+.footer-links {
+	ul {
+		li {
+			a {
+				&:hover {}
+			}
+			/*
+			be careful with the depth of your menus.
+			it's very rare to have multi-depth menus in
+			the footer.
+			*/
+			ul {}
+		}
+	}
+} /* end .footer-links */
+
+/* // Pages // */
+
+.page-template {
+	.entry-content {
+		margin-top: 4em;
+	}
+}
+.page-template-portfolio {
+	.entry-content {
+		padding: 0;
+	}
+}
+.project {
+	padding: 2.4em 0 0;
+	
+	h2 {
+		margin: 0 1em 1em 0;
+		padding: 0.4em 1em;
+		font-weight: 400;
+		line-height: 1em;
+		float: left;
+		background-color: $dark-blue;
+		color: $white;
+	}
+	.gallery {
+		clear: both;
+	}
+}
+.project:first-child {
+	background: #ccc url('../images/bg-pattern.png') repeat 0 0;
+}
+.gallery-icon {
+	width: 32.25%;
+	max-height: 380px;
+	margin: 0 0 0 1.5%;
+	float: left;
+	-webkit-transform-origin: top left;
+	transform-origin: top left;
+	-webkit-animation: swing-in	 0.8s ease-in 1 normal both;
+	animation: swing-in 0.8s ease-in 1 normal both;
+	overflow: hidden;
+}
+/*
+.gallery-icon:nth-of-type(3n + 1) {
+	margin-left: 0;
+}
+*/
+.gallery-item:nth-of-type(2n+1) .gallery-icon { 
+	-webkit-animation-delay: 0.2s;
+	animation-delay: 0.2s;
+}
+.gallery-item:nth-of-type(3n+1) .gallery-icon {
+	margin-left: 0;
+	-webkit-animation-delay: 0.35s;
+	animation-delay: 0.35s;
+}
+
