@@ -922,6 +922,13 @@ FOOTER STYLES
 	}
 }
 */
+.gallery-item {
+	width: auto;
+	position: relative;
+}
 .gallery-caption {
+	width: 100%;
 	display: none;
+	position: absolute;
+	bottom: 0;
 }
