@@ -74,8 +74,8 @@
 
 						<?php get_sidebar(); ?>
 
-				</div>
+				</div><!-- END #inner-content -->
 
-			</div>
+			</div><!-- END #content -->
 
 <?php get_footer(); ?>

@@ -115,6 +115,40 @@ jQuery(document).ready(function($) {
    * You can remove this if you don't need it
   */
   loadGravatars();
+  
+  	/* // - - Scroll Function - - // */
+     
+     $(".scroll").click(function(event){		
+		event.preventDefault();
+		$('html,body').animate({scrollTop:$(this.hash).offset().top},'slow');
+	 });
+	 
+	 /* // - - Menu Toggle - - // */
+	 
+	 var menu = $('nav ul');
 
-
+	 $('.menu-toggle').click(function() {
+	 	$(menu).slideToggle('slow');
+	 	$('#container').toggleClass('open-drawer');
+	 	$('.drawer-wrap').toggleClass('contain-vp');
+	 });
+	 
+	 if ($(window).width() < 768) {
+	 	$(menu).css('display','none');
+	 	$('.menu-toggle').css('display','block');
+	 } else {
+	 	$(menu).css('display','block');
+	 	$('.menu-toggle').css('display','none');
+	 }
+	 
+	 $(window).on('resize', function() {
+	         if ($(window).width() < 768) {
+	 			$(menu).css('display','none');
+	 			$('.menu-toggle').css('display','block');
+	 		} else {
+	 			$(menu).css('display','block');
+	 			$('.menu-toggle').css('display','none');
+	 		}
+	 });
+	
 }); /* end of as page load scripts */

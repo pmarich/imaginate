@@ -13,7 +13,24 @@ be seen on the Desktop.
   width: 1000px;
 }
 
+.pmarich-logo {
+	width: 160px;
+	top: 12px;
+	left: 8px;
+}
 
+.page-template-home {
+	.entry-content {
+		max-width: 1160px;
+		margin: 0 auto;
+	}
+	.secondary-content {
+		article {
+			padding: 0 4%;
+			float: left;
+		}
+	}
+}
 
 /* // - - PORTFOLIO - - // */
 

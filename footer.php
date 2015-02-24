@@ -1,31 +1,23 @@
-			<footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+			<footer class="footer cf" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
 
-				<div id="inner-footer" class="wrap cf">
-
-					<nav role="navigation">
-						<?php wp_nav_menu(array(
-    					'container' => 'div',                           // enter '' to remove nav container (just make sure .footer-links in _base.scss isn't wrapping)
-    					'container_class' => 'footer-links cf',         // class of container (should you choose to use it)
-    					'menu' => __( 'Footer Links', 'bonestheme' ),   // nav name
-    					'menu_class' => 'nav footer-nav cf',            // adding custom nav class
-    					'theme_location' => 'footer-links',             // where it's located in the theme
-    					'before' => '',                                 // before the menu
-    					'after' => '',                                  // after the menu
-    					'link_before' => '',                            // before each link
-    					'link_after' => '',                             // after each link
-    					'depth' => 0,                                   // limit the depth of the nav
-    					'fallback_cb' => 'bones_footer_links_fallback'  // fallback function
-						)); ?>
-					</nav>
-
-					<p class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p>
-
-				</div>
-
+					<ul class="nav main-nav cf">
+						<li><a href="<?php echo home_url(); ?>/portfolio">Portfolio</a><span class="add-on">My work</span></li>
+						<li><a href="<?php echo home_url(); ?>/about">About Me</a><span class="add-on">How I got here</span></li>
+						<li><a href="<?php echo home_url(); ?>/blog">Blog</a><span class="add-on">What's going on</span></li>
+						<li><a href="<?php echo home_url(); ?>/contact">Contact</a><span class="add-on">Making something?</span></li>
+						<li><a href="<?php echo home_url(); ?>">Resume</a><span class="add-on">(PDF)</span></li>
+					</ul>
+					<ul class="nav social cf">
+						<li><a href="https://www.linkedin.com/profile/view?id=31860689&trk=nav_responsive_tab_profile"><img title="LinkedIn" class="social-icon" src="<?php echo get_template_directory_uri(); ?>/library/images/icon-linkedin.svg" alt="Find me on LinkedIn" /></a></li>
+						<li><a href="https://twitter.com/pmarich"><img title="Twitter" class="social-icon" src="<?php echo get_template_directory_uri(); ?>/library/images/icon-twitter.svg" alt="Find me on Twitter" /></a></li>
+						<li><a href="http://codepen.io/pmarich/"><img title="CodePen" class="social-icon" src="<?php echo get_template_directory_uri(); ?>/library/images/icon-codepen.svg" alt="Find me on CodePen" /></a></li>
+					</ul>
+					<small class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</small>
+				
 			</footer>
 
-		</div>
-
+		</div><!-- END #container -->
+		</div><!-- END .drawer-wrap -->
 		<?php // all js scripts are loaded in library/bones.php ?>
 		<?php wp_footer(); ?>
 

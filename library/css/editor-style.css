@@ -209,6 +209,7 @@ body#tinymce.wp-editor {
   use color variables properly:
   http://sachagreif.com/sass-color-variables/
   */
+  /* Background Image */
   /******************************************************************
   Site Name:
   Author:
@@ -336,6 +337,24 @@ body#tinymce.wp-editor {
   Thanks to @anthonyshort for the inspiration on these.
   USAGE: @include transition(all 0.2s ease-in-out);
   */
+  /*********************
+  ANIMATIONS
+  *********************/
+  /* Slide in*/
+  /*@keyframes swing-in {
+  	0% {
+  		transform: rotateY(90deg);
+  	} 
+  	65% {
+  		transform: rotateY(-30deg);
+  	}
+  	80% {
+  		transform: rotateY(10deg);
+  	}
+  	100% {
+  		transform: rotateY(0deg);
+  	}
+  }*/
   /*********************
   CSS3 GRADIENTS
   Be careful with these since they can
@@ -593,6 +612,7 @@ body#tinymce.wp-editor {
     font-family: Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif !important;
     font-style: italic; }
   body#tinymce.wp-editor p {
+    max-width: 44em;
     -ms-word-wrap: break-word;
     word-break: break-word;
     word-wrap: break-word;
@@ -607,6 +627,60 @@ body#tinymce.wp-editor {
     -ms-font-feature-settings: "liga", "dlig";
     -o-font-feature-settings: "liga", "dlig";
     font-feature-settings: "liga", "dlig"; }
+@-webkit-keyframes slide-in {
+  0% {
+    transform: translate(0, 40px);
+    opacity: 0; }
+  70% {
+    transform: translate(0, -32px); }
+  85% {
+    transform: translate(0, 11px); }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1; } }
+@-moz-keyframes slide-in {
+  0% {
+    transform: translate(0, 40px);
+    opacity: 0; }
+  70% {
+    transform: translate(0, -32px); }
+  85% {
+    transform: translate(0, 11px); }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1; } }
+@keyframes slide-in {
+  0% {
+    transform: translate(0, 40px);
+    opacity: 0; }
+  70% {
+    transform: translate(0, -32px); }
+  85% {
+    transform: translate(0, 11px); }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1; } }
+@-webkit-keyframes spin-in {
+  from {
+    opacity: 0;
+    transform: translate(0); }
+  to {
+    opacity: 1;
+    transform: translate(50%, 0); } }
+@-moz-keyframes spin-in {
+  from {
+    opacity: 0;
+    transform: translate(0); }
+  to {
+    opacity: 1;
+    transform: translate(50%, 0); } }
+@keyframes spin-in {
+  from {
+    opacity: 0;
+    transform: translate(0); }
+  to {
+    opacity: 1;
+    transform: translate(50%, 0); } }
   body#tinymce.wp-editor .hidden {
     display: none !important;
     visibility: hidden; }
@@ -637,6 +711,8 @@ body#tinymce.wp-editor {
     /* 2 */ }
   body#tinymce.wp-editor .clearfix:after {
     clear: both; }
+  body#tinymce.wp-editor .contain-vp {
+    overflow: hidden; }
   body#tinymce.wp-editor a, body#tinymce.wp-editor a:visited {
     color: #00a1ff;
     /* on hover */

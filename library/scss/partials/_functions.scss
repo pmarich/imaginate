@@ -39,6 +39,10 @@ box-shadow: 0 0 4px rgba(0,0,0,0.3);
     @return rgba(255,255,255,$opacity);
 }
 
+// blue
+@function blue($opacity) {
+    @return rgba(0,161,255,$opacity);
+}
 
 /*********************
 RESPONSIVE HELPER FUNCTION

@@ -100,7 +100,11 @@ POSTS & CONTENT STYLES
 	}
 
 } /* end .entry-content */
-
+.secondary-content {
+	h2 {
+		box-shadow: inset -0.55em 0 0 white(0.5);
+	}
+}
 /*********************
 FOOTER STYLES
 *********************/
@@ -115,3 +119,12 @@ do they need tweaking?
 	}
 } /* end .footer-links */
 
+.date {
+	padding: 0;
+	transform: rotate(270deg) translate(-10%, 0);
+	letter-spacing: 3px;
+	position: absolute;
+	top: 55%;
+	right: -6.7%;
+	background-color: transparent;
+}

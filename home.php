@@ -15,31 +15,18 @@
 
 <?php get_header(); ?>
 
-			<div id="content">
+	<div id="content">
+		<div id="inner-content" class="cf">
+			<main id="main" class="m-all cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-				<div id="inner-content" class="wrap cf">
-
-						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-
-							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
-
-								<header class="article-header">
-
-									<h1 class="page-title"><?php the_title(); ?></h1>
-
-									<!--
-<p class="byline vcard">
-										<?php //printf( __( 'Posted <time class="updated" datetime="%1$s" itemprop="datePublished">%2$s</time> by <span class="author">%3$s</span>', 'bonestheme' ), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), get_the_author_link( get_the_author_meta( 'ID' ) )); ?>
-									</p>
--->
-
-
-								</header>
+				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 								<section class="entry-content cf" itemprop="articleBody">
-									<?php
+									<div class="intro t-3of5 d-1of2">
+										<header class="article-header">
+											<h1 class="page-title"><?php the_title(); ?></h1>
+										</header>
+										<?php
 										// the content (pretty self explanatory huh)
 										the_content();
 
@@ -62,40 +49,78 @@
 											'link_after'  => '</span>',
 										) );
 									?>
+									</div>
+									<div class="t-2of5 d-3of7 last-col">
+										<img src="<?php echo get_template_directory_uri(); ?>/library/images/portrait1.png" alt="Patrick Marich, drawing" />
+									</div>
 								</section>
 
+				<?php endwhile; else : ?>
 
+						<article id="post-not-found" class="hentry cf">
+								<header class="article-header">
+									<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+								</header>
+								<section class="entry-content">
+									<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+								</section>
 								<footer class="article-footer">
-
-                  <?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
-
+									<p><?php _e( 'This is the error message in the page-custom.php template.', 'bonestheme' ); ?></p>
 								</footer>
+						</article>
 
-								<?php comments_template(); ?>
-
-							</article>
-
-							<?php endwhile; else : ?>
-
-									<article id="post-not-found" class="hentry cf">
-											<header class="article-header">
-												<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+				<?php endif; ?>
+				<section class="secondary-content cf">
+					<div class="wrap">
+						<article class="t-4of5 d-1of2 cf">
+										<header>
+											<h1 class="label-head">The Sandbox</h1>
+											<?php query_posts('posts_per_page=1&cat=' . $sandbox_cat);
+												while (have_posts()) : the_post(); ?>
+												<h2><a href="<?php the_permalink()?>"><?php the_title()?></a></h2>
+												<span class="date"><?php echo get_the_date('n/y')?></span>
 										</header>
-											<section class="entry-content">
-												<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
-										</section>
-										<footer class="article-footer">
-												<p><?php _e( 'This is the error message in the page-custom.php template.', 'bonestheme' ); ?></p>
-										</footer>
-									</article>
+										<a href="<?php the_permalink()?>">
+												<?php
+												if (is_mobile()) {
+													the_post_thumbnail('medium');
+												} else {
+													the_post_thumbnail('large');
+												} ?>
+										</a>
 
-							<?php endif; ?>
+										<?php the_excerpt() ?>
+												
+										<?php endwhile; ?>
+						</article>
+						<article class="t-4of5 d-1of2 cf">
+										<header>
+											<h1 class="label-head">Bloggy Stuff</h1>
+											<?php query_posts('posts_per_page=1&cat=' . $bloggy_cat);
+												while (have_posts()) : the_post(); ?>
+												<h2><a href="<?php the_permalink()?>"><?php the_title()?></a></h2>
+												<span class="date"><?php echo get_the_date('n/y')?></span>
+										</header>
+										<a href="<?php the_permalink()?>">
+											<?php
+												if (is_mobile()) {
+												   the_post_thumbnail('medium');
+												} else {
+													the_post_thumbnail('large');
+											} ?>
+										</a>
 
-						</main>
+										<?php the_excerpt()?>
+										
+										<?php endwhile; ?>
+						</article>
+					<div><!-- END .wrap -->
+				</section>
 
-				</div>
+			</main>
 
-			</div>
+		</div>
 
+	</div>
 
 <?php get_footer(); ?>

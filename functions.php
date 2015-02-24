@@ -243,6 +243,8 @@ function bones_fonts() {
 }
 
 $portfolio = get_cat_ID("Portfolio");
+$bloggy_cat = get_cat_ID("Bloggy Stuff");
+$sandbox_cat = get_cat_ID("Sandbox");
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
 

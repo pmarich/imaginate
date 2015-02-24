@@ -41,6 +41,79 @@ USAGE: @include transition(all 0.2s ease-in-out);
 }
 
 /*********************
+ANIMATIONS
+*********************/
+
+/* Slide in*/
+
+@mixin keyframes($slide-in) {
+	@-webkit-keyframes #{$slide-in} {
+    	@content;
+  	}
+  	@-moz-keyframes #{$slide-in} {
+    	@content;
+  	}
+  	@keyframes #{$slide-in} {
+    	@content;
+  	}
+}
+
+@include keyframes(slide-in) {
+	0% {
+		transform: translate(0,40px);
+		opacity: 0;
+	}
+	70% {
+		transform: translate(0, -32px);
+	}
+	85% {
+		transform: translate(0, 11px);
+	}
+	100% {
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+}
+
+@mixin keyframes($spin-in) {
+	@-webkit-keyframes #{$spin-in} {
+    	@content;
+  	}
+  	@-moz-keyframes #{$spin-in} {
+    	@content;
+  	}
+  	@keyframes #{$spin-in} {
+    	@content;
+  	}
+}
+
+@include keyframes(spin-in) {
+	from {
+		opacity: 0;
+		transform: translate(0);
+	}
+	to {
+		opacity: 1;
+		transform: translate(50%, 0);
+	}
+}
+
+/*@keyframes swing-in {
+	0% {
+		transform: rotateY(90deg);
+	} 
+	65% {
+		transform: rotateY(-30deg);
+	}
+	80% {
+		transform: rotateY(10deg);
+	}
+	100% {
+		transform: rotateY(0deg);
+	}
+}*/
+
+/*********************
 CSS3 GRADIENTS
 Be careful with these since they can
 really slow down your CSS. Don't overdo it.
@@ -140,3 +213,6 @@ display: table; /* 2 */
 clear: both;
 }
 
+.contain-vp {
+	overflow: hidden;
+}
