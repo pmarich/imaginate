@@ -1,0 +1,49 @@
+// Button primitives
+// -----------------
+
+%ds-button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-family: ds-font-family('base');
+  font-size: ds-font-size('lg');
+  line-height: 2.125rem;
+  font-weight: ds-font-weight('base', 'regular');
+  padding: 0 ds-space('xl');
+  border-radius: ds-radius('md');
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: ds-color('neutral', '0');
+  @include ds-transition(background-color, 'fast');
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:active {
+    top: 1px;
+  }
+}
+
+/// Applies a button colorway based on palette tokens.
+/// @param {String} $color-token ['primary']
+@mixin ds-button-variant($color-token: 'primary') {
+  background-color: ds-color($color-token);
+  color: ds-color($color-token, 'contrast', ds-color('neutral', '0'));
+
+  &:hover,
+  &:focus {
+    background-color: ds-color($color-token, 'dark', darken(ds-color($color-token), 4%));
+  }
+
+  &:focus {
+    @include ds-focus-ring($color-token);
+  }
+
+  &:active {
+    background-color: ds-color($color-token, 'dark', darken(ds-color($color-token), 5%));
+  }
+}

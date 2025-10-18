@@ -1,0 +1,11 @@
+// Focus treatments
+// ----------------
+
+/// Applies a consistent focus ring around interactive components.
+/// @param {String} $color-token ['accent']
+/// @param {Number} $opacity [0.35]
+@mixin ds-focus-ring($color-token: 'accent', $opacity: 0.35) {
+  $color: ds-color($color-token);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba($color, $opacity);
+}

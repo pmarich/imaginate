@@ -1,0 +1,18 @@
+// General helpers
+// ---------------
+
+/// Creates a transition shorthand using the motion tokens.
+@mixin ds-transition($properties, $duration: 'base', $timing: 'standard') {
+  transition: $properties ds-timing($duration) ds-ease($timing);
+}
+
+/// Generates a default link treatment.
+@mixin ds-link($color-token: 'accent') {
+  color: ds-color($color-token);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: ds-color($color-token, 'dark');
+  }
+}

@@ -1,0 +1,24 @@
+// Elevation tokens
+// ----------------
+
+$ds-elevation-levels: (
+  "none": none,
+  "xs": 0 1px 2px rgba(0, 0, 0, 0.12),
+  "sm": 0 2px 5px rgba(0, 0, 0, 0.2),
+  "md": 0 4px 10px rgba(0, 0, 0, 0.18),
+  "lg": 0 8px 20px rgba(0, 0, 0, 0.2),
+  "inset-accent": inset 0 0 14px 2px ds-color('accent')
+);
+
+@function ds-shadow($token: 'none', $fallback: null) {
+  @if map-has-key($ds-elevation-levels, $token) {
+    @return map-get($ds-elevation-levels, $token);
+  }
+
+  @if $fallback != null {
+    @return $fallback;
+  }
+
+  @warn 'Shadow token `#{$token}` is not defined. Returning none.';
+  @return none;
+}

@@ -16,13 +16,11 @@ GENERAL STYLES
 *********************/
 
 body {
-	font-family: $sans-serif;
-	font-size: 100%;
-	line-height: 1.5;
-	color: $text-color;
-	background-color: $light-gray;
-  	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
+        @include ds-body-text();
+        font-size: 100%;
+        background-color: $light-gray;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
 }
 
 /*********************
@@ -51,18 +49,12 @@ LINK STYLES
 *********************/
 
 a, a:visited {
-	color: $link-color;
-	text-decoration: none;
+        @include ds-link('accent');
 
-	/* on hover */
-	&:hover, &:focus {
-		color: $link-hover;
-	}
+        /* on click */
+        &:active {
 
-	/* on click */
-	&:active {
-
-	}
+        }
 
 	/* mobile tap color */
 	&:link {
@@ -80,8 +72,8 @@ H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-	text-rendering: optimizelegibility;
-	font-family: $header-font;
+        text-rendering: optimizelegibility;
+        font-family: $header-font;
 	/*
 	if you're going to use webfonts, be sure to check your weights
 	http://css-tricks.com/watch-your-font-weight/
@@ -94,34 +86,28 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 }
 
 h1, .h1 {
-	margin-bottom: 1.5em;
-	font-size: 3.2em;
-	line-height: 1.333em;
-	color: $mid-gray;
-	font-weight: 300;
-	letter-spacing: 4px;
+        margin-bottom: ds-space('xl');
+        @include ds-heading('heading-1', 'neutral', '500');
 }
 
 h2, .h2 {
-	font-size: 1.75em;
-	line-height: 1.4em;
-	margin-bottom: 0.375em;
+        @include ds-heading('heading-2', 'neutral', '650');
+        margin-bottom: ds-space('2xs');
 }
 
 h3, .h3 {
-	font-size: 1.125em;
+        @include ds-heading('heading-3', 'neutral', '650');
 }
 
 h4, .h4 {
-	font-size: 1.1em;
-	font-weight: 700;
+        @include ds-heading('heading-4', 'neutral', '800');
 }
 
 h5, .h5 {
-	font-size: 0.846em;
-	line-height: 2.09em;
-	text-transform: uppercase;
-	letter-spacing: 2px;
+        @include ds-heading('heading-5', 'neutral', '650');
+        line-height: 2.09em;
+        text-transform: uppercase;
+        letter-spacing: 0.125em;
 }
 
 /*********************

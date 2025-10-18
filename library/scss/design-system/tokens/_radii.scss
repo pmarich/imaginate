@@ -1,0 +1,25 @@
+// Border radius scale
+// -------------------
+
+$ds-radius-scale: (
+  "none": 0,
+  "xs": 2px,
+  "sm": 3px,
+  "md": 4px,
+  "lg": 8px,
+  "pill": 9999px,
+  "round": 50%
+);
+
+@function ds-radius($token: 'sm', $fallback: null) {
+  @if map-has-key($ds-radius-scale, $token) {
+    @return map-get($ds-radius-scale, $token);
+  }
+
+  @if $fallback != null {
+    @return $fallback;
+  }
+
+  @warn 'Radius token `#{$token}` is not defined. Returning 0.';
+  @return 0;
+}

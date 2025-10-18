@@ -1,0 +1,11 @@
+// Surface helpers
+// ---------------
+
+/// Applies a surface background, border, and elevation.
+/// @param {String} $background-token ['neutral']
+/// @param {String} $background-variant ['0']
+/// @param {String} $shadow-token ['none']
+@mixin ds-surface($background-token: 'neutral', $background-variant: '0', $shadow-token: 'none') {
+  background-color: ds-color($background-token, $background-variant);
+  box-shadow: ds-shadow($shadow-token);
+}

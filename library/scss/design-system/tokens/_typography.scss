@@ -1,0 +1,174 @@
+// Typography tokens
+// -----------------
+
+$ds-font-stacks: (
+  "base": (
+    "family": '"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
+    "weights": (
+      "light": 300,
+      "regular": 400,
+      "medium": 500,
+      "semi-bold": 600,
+      "bold": 700
+    )
+  ),
+  "display": (
+    "family": '"Yanone Kaffeesatz", Helvetica, Arial, sans-serif',
+    "weights": (
+      "light": 300,
+      "regular": 400,
+      "bold": 700
+    )
+  ),
+  "serif": (
+    "family": '"Georgia", Cambria, "Times New Roman", Times, serif',
+    "weights": (
+      "regular": 400,
+      "bold": 700
+    )
+  )
+);
+
+$ds-type-scale: (
+  "xs": 0.75rem,
+  "sm": 0.875rem,
+  "base": 1rem,
+  "md": 1.125rem,
+  "lg": 1.5rem,
+  "xl": 1.75rem,
+  "2xl": 2.25rem,
+  "3xl": 3.2rem
+);
+
+$ds-line-heights: (
+  "tight": 1.25,
+  "base": 1.5,
+  "loose": 1.8
+);
+
+$ds-letter-spacings: (
+  "tight": -0.01em,
+  "base": 0,
+  "loose": 0.25em
+);
+
+$ds-text-styles: (
+  "body": (
+    "family": 'base',
+    "size": 'base',
+    "line-height": 'base',
+    "weight": 'regular',
+    "letter-spacing": 'base'
+  ),
+  "body-small": (
+    "family": 'base',
+    "size": 'sm',
+    "line-height": 'base',
+    "weight": 'regular',
+    "letter-spacing": 'base'
+  ),
+  "heading-1": (
+    "family": 'display',
+    "size": '3xl',
+    "line-height": 'tight',
+    "weight": 'light',
+    "letter-spacing": 'loose'
+  ),
+  "heading-2": (
+    "family": 'display',
+    "size": 'xl',
+    "line-height": 'tight',
+    "weight": 'regular',
+    "letter-spacing": 'base'
+  ),
+  "heading-3": (
+    "family": 'display',
+    "size": 'md',
+    "line-height": 'tight',
+    "weight": 'regular',
+    "letter-spacing": 'base'
+  ),
+  "heading-4": (
+    "family": 'base',
+    "size": 'md',
+    "line-height": 'tight',
+    "weight": 'semi-bold',
+    "letter-spacing": 'base'
+  ),
+  "heading-5": (
+    "family": 'base',
+    "size": 'sm',
+    "line-height": 'tight',
+    "weight": 'bold',
+    "letter-spacing": 'loose'
+  )
+);
+
+@function ds-font-family($token: 'base') {
+  @if map-has-key($ds-font-stacks, $token) {
+    $stack: map-get($ds-font-stacks, $token);
+    @return map-get($stack, 'family');
+  }
+
+  @warn 'Font stack `#{$token}` is not defined. Returning sans-serif.';
+  @return '"Helvetica Neue", Helvetica, Arial, sans-serif';
+}
+
+@function ds-font-weight($stack-token: 'base', $weight-token: 'regular', $fallback: 400) {
+  @if map-has-key($ds-font-stacks, $stack-token) {
+    $stack: map-get($ds-font-stacks, $stack-token);
+    $weights: map-get($stack, 'weights');
+
+    @if map-has-key($weights, $weight-token) {
+      @return map-get($weights, $weight-token);
+    }
+  }
+
+  @if $fallback != null {
+    @return $fallback;
+  }
+
+  @warn 'Font weight `#{$weight-token}` for stack `#{$stack-token}` is not defined. Returning 400.';
+  @return 400;
+}
+
+@function ds-font-size($token: 'base', $fallback: 1rem) {
+  @if map-has-key($ds-type-scale, $token) {
+    @return map-get($ds-type-scale, $token);
+  }
+
+  @return $fallback;
+}
+
+@function ds-line-height($token: 'base', $fallback: 1.5) {
+  @if map-has-key($ds-line-heights, $token) {
+    @return map-get($ds-line-heights, $token);
+  }
+
+  @return $fallback;
+}
+
+@function ds-letter-spacing($token: 'base', $fallback: 0) {
+  @if map-has-key($ds-letter-spacings, $token) {
+    @return map-get($ds-letter-spacings, $token);
+  }
+
+  @return $fallback;
+}
+
+/// Applies a pre-defined typography style.
+/// @param {String} $token - key from $ds-text-styles map
+@mixin ds-text-style($token) {
+  @if map-has-key($ds-text-styles, $token) {
+    $style: map-get($ds-text-styles, $token);
+    $stack: map-get($style, 'family');
+    font-family: ds-font-family($stack);
+    font-size: ds-font-size(map-get($style, 'size'));
+    line-height: ds-line-height(map-get($style, 'line-height'));
+    font-weight: ds-font-weight($stack, map-get($style, 'weight'));
+    letter-spacing: ds-letter-spacing(map-get($style, 'letter-spacing'));
+  } @else {
+    @warn 'Text style `#{$token}` is not defined. Falling back to body style.';
+    @include ds-text-style('body');
+  }
+}

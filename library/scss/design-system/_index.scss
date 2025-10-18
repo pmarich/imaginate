@@ -1,0 +1,11 @@
+// Design System entry point
+// -------------------------
+// Import foundational design tokens, mixins, utilities, and component
+// primitives that power the rest of the theme styles. Nothing in this
+// file should output CSS on its own – it simply wires the system
+// together so downstream partials can consume the tokens and mixins.
+
+@import "tokens/index";
+@import "mixins/index";
+@import "utilities/index";
+@import "components/index";

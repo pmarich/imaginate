@@ -1,0 +1,29 @@
+// Responsive helpers
+// ------------------
+
+/// Media query helper that wraps content in a min-width query derived
+/// from the breakpoint token map.
+/// @param {String} $token - key from $ds-breakpoints
+@mixin ds-up($token) {
+  $breakpoint: ds-breakpoint($token);
+
+  @if $breakpoint != null {
+    @media only screen and (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+/// Media query helper that constrains styles between two breakpoints.
+/// @param {String} $from
+/// @param {String} $until
+@mixin ds-between($from, $until) {
+  $min: ds-breakpoint($from);
+  $max: ds-breakpoint($until);
+
+  @if $min != null and $max != null {
+    @media only screen and (min-width: $min) and (max-width: ($max - 1)) {
+      @content;
+    }
+  }
+}

@@ -50,24 +50,25 @@ I've edited it a bit, but it's a nice starting point.
 */
 
 
-// font stacks
-$sans-serif:        "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$serif:             "Georgia", Cambria, Times New Roman, Times, serif;
-$header-font: 		"Yanone Kaffeesatz", Helvetica, Arial, sans-serif;
+// font stacks sourced from the design system tokens
+$sans-serif:        ds-font-family('base') !default;
+$serif:             ds-font-family('serif') !default;
+$header-font:       ds-font-family('display') !default;
 
 
 /*
  i imported this one in the functions file so bones would look sweet.
  don't forget to remove it for your site.
 */
-$lato:              'Lato', $sans-serif;
+$lato:              'Lato', $sans-serif !default;
 
 /*
 some nice typographical defaults
 more here: http://www.newnet-soft.com/blog/csstypography
 */
 p {
-	max-width: 44em;	
+        @include ds-body-text();
+        max-width: 44em;
 
   -ms-word-wrap: break-word;
   word-break: break-word; //non-standart css for webkit
@@ -87,4 +88,3 @@ p {
        -o-font-feature-settings: "liga", "dlig";
           font-feature-settings: "liga", "dlig";
 }
-
