@@ -1,0 +1,41 @@
+// Motion tokens
+// -------------
+
+$ds-timings: (
+  "instant": 0.1s,
+  "fast": 0.16s,
+  "base": 0.24s,
+  "slow": 0.4s
+);
+
+$ds-easing: (
+  "standard": ease-in-out,
+  "accelerate": cubic-bezier(0.4, 0, 1, 1),
+  "decelerate": cubic-bezier(0, 0, 0.2, 1)
+);
+
+@function ds-timing($token: 'base', $fallback: null) {
+  @if map-has-key($ds-timings, $token) {
+    @return map-get($ds-timings, $token);
+  }
+
+  @if $fallback != null {
+    @return $fallback;
+  }
+
+  @warn 'Timing token `#{$token}` is not defined. Returning 0.2s.';
+  @return 0.2s;
+}
+
+@function ds-ease($token: 'standard', $fallback: null) {
+  @if map-has-key($ds-easing, $token) {
+    @return map-get($ds-easing, $token);
+  }
+
+  @if $fallback != null {
+    @return $fallback;
+  }
+
+  @warn 'Easing token `#{$token}` is not defined. Returning ease-in-out.';
+  @return ease-in-out;
+}

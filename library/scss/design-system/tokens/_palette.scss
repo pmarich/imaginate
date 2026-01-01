@@ -1,0 +1,103 @@
+// Color palette tokens
+// --------------------
+// Colors are grouped by intent (brand, neutrals, status) so we can map
+// UI states without scattering hex values through the codebase.
+
+$ds-color-palette: (
+  "primary": (
+    "base": #f01d4f,
+    "light": lighten(#f01d4f, 6%),
+    "dark": #7f243f,
+    "contrast": #ffffff
+  ),
+  "secondary": (
+    "base": #036097,
+    "light": lighten(#036097, 12%),
+    "dark": darken(#036097, 12%),
+    "contrast": #ffffff
+  ),
+  "accent": (
+    "base": #00a1ff,
+    "light": lighten(#00a1ff, 14%),
+    "dark": darken(#00a1ff, 12%),
+    "contrast": #00253a
+  ),
+  "success": (
+    "base": #7dd667,
+    "soft": #e6efc2,
+    "contrast": #1f4217
+  ),
+  "warning": (
+    "base": #ebe16f,
+    "soft": #f6efb4,
+    "contrast": #3d3605
+  ),
+  "danger": (
+    "base": #f01d4f,
+    "soft": #fbe3e4,
+    "contrast": #4a0616
+  ),
+  "info": (
+    "base": #00a1ff,
+    "soft": #d6efff,
+    "contrast": #00314d
+  ),
+  "neutral": (
+    "0": #ffffff,
+    "50": #f8f9fa,
+    "100": #f1f3f5,
+    "200": #eceee5,
+    "300": #dcdfe4,
+    "350": #cfcfcf,
+    "400": #cccccc,
+    "500": #aaaaaa,
+    "600": #888888,
+    "650": #787878,
+    "700": #666666,
+    "750": #555555,
+    "800": #444444,
+    "850": #333333,
+    "900": #222222
+  ),
+  "ink": (
+    "muted": #9fa6b4,
+    "subtle": #787878,
+    "base": #666666,
+    "strong": #222222
+  )
+);
+
+/// Returns a color from the design system palette.
+/// @param {String} $token - top-level palette key
+/// @param {String} $variant ['base'] - optional variant name
+/// @param {Color|null} $fallback [null] - explicit fallback if token is missing
+/// @return {Color|null}
+@function ds-color($token, $variant: 'base', $fallback: null) {
+  @if map-has-key($ds-color-palette, $token) {
+    $value: map-get($ds-color-palette, $token);
+
+    @if type-of($value) == 'map' {
+      @if map-has-key($value, $variant) {
+        @return map-get($value, $variant);
+      }
+
+      // Provide graceful fallback when variant is missing.
+      @if map-has-key($value, 'base') {
+        @return map-get($value, 'base');
+      }
+
+      @return nth($value, 1);
+    }
+
+    @if $variant == 'base' {
+      @return $value;
+    }
+  }
+
+  @if $fallback != null {
+    @return $fallback;
+  }
+
+  @warn 'Color token `#{$token}` with variant `#{$variant}` is not defined. Returning null.';
+  @return null;
+}

@@ -1,0 +1,9 @@
+// Card primitives
+// ---------------
+
+%ds-card {
+  @include ds-surface('neutral', '0', 'sm');
+  border-radius: ds-radius('lg');
+  padding: ds-space('xl');
+  color: ds-color('ink', 'base');
+}

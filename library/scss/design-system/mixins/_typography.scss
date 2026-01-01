@@ -1,0 +1,20 @@
+// Typography helpers
+// ------------------
+
+/// Applies a heading style and optional color override.
+/// @param {String} $token - token from $ds-text-styles map
+/// @param {String|null} $color-token [null]
+/// @param {String} $color-variant ['base']
+@mixin ds-heading($token, $color-token: null, $color-variant: 'base') {
+  @include ds-text-style($token);
+
+  @if $color-token != null {
+    color: ds-color($color-token, $color-variant);
+  }
+}
+
+/// Applies the base body text defaults.
+@mixin ds-body-text($style: 'body') {
+  @include ds-text-style($style);
+  color: ds-color('ink', 'base');
+}

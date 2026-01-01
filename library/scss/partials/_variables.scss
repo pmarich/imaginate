@@ -12,45 +12,51 @@ No one likes a mess.
 ******************************************************************/
 
 /*********************
-COLORS
-Need help w/ choosing your colors? Try this site out:
-http://0to255.com/
+COLOR TOKENS
 *********************/
 
-$alert-yellow:      #ebe16f;
-$alert-red:         #fbe3e4;
-$alert-green:       #e6efc2;
+$alert-yellow:      ds-color('warning');
+$alert-red:         ds-color('danger', 'soft');
+$alert-green:       ds-color('success', 'soft');
 
-$black:             #222;
-$white:             #fff;
+$black:             ds-color('neutral', '900');
+$white:             ds-color('neutral', '0');
 
-$light-gray:        #f8f9fa;
-$gray:              #444;
-$mid-gray:			#aaa;
-$text-color:        #666;
-$meta-gray:         #9fa6b4;
+$light-gray:        ds-color('neutral', '50');
+$gray:              ds-color('neutral', '800');
+$mid-gray:          ds-color('neutral', '500');
+$text-color:        ds-color('ink', 'base');
+$meta-gray:         ds-color('ink', 'muted');
 
-$tan:               #eceee5;
+$tan:               ds-color('neutral', '200');
 
-$green:             #7dd667;
+$green:             ds-color('success');
 
-$bones-pink:        #f01d4f;
-$blue:              #00a1ff;
-$dark-blue:			#036097;
+$bones-pink:        ds-color('primary');
+$blue:              ds-color('accent');
+$dark-blue:         ds-color('secondary');
 
 $link-color:        $blue;
-$link-hover:        darken($link-color, 9%);
+$link-hover:        ds-color('accent', 'dark');
 
-$border-color:      #ccc;
-$disabled-gray:     #cfcfcf;
+$border-color:      ds-color('neutral', '400');
+$disabled-gray:     ds-color('neutral', '350');
 
 
-/*
-Here's a great tutorial on how to
-use color variables properly:
-http://sachagreif.com/sass-color-variables/
-*/
+/*********************
+TYPOGRAPHY & SPACING TOKENS
+*********************/
 
-/* Background Image */
+$sans-serif:        ds-font-family('base');
+$serif:             ds-font-family('serif');
+$header-font:       ds-font-family('display');
 
-$bg-pattern:			#ccc url('../images/bg-pattern.png') repeat 0 0;
+$base-spacing-unit: ds-space('lg');
+$large-spacing-unit: ds-space('xl');
+
+
+/*********************
+BACKGROUND IMAGE TOKEN
+*********************/
+
+$bg-pattern:        ds-color('neutral', '400') url('../images/bg-pattern.png') repeat 0 0;

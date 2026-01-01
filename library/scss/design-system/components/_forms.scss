@@ -1,0 +1,52 @@
+// Form primitives
+// ---------------
+
+%ds-input-base {
+  display: block;
+  width: 100%;
+  max-width: 25rem;
+  min-height: 2.5rem;
+  padding: 0 ds-space('sm');
+  margin-bottom: ds-space('md');
+  font-family: ds-font-family('base');
+  font-size: ds-font-size('base');
+  line-height: 2.5rem;
+  color: ds-color('ink', 'base');
+  background-color: ds-color('neutral', '800');
+  border: 0;
+  border-radius: ds-radius('sm');
+  box-shadow: none;
+  @include ds-transition(background-color, 'base');
+}
+
+/// Applies the hover and focus states shared across inputs.
+@mixin ds-input-interactive($color-token: 'neutral', $color-variant: '700') {
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: ds-color($color-token, $color-variant);
+  }
+
+  &:focus {
+    @include ds-focus-ring('accent', 0.45);
+  }
+}
+
+/// Applies validation feedback styles.
+@mixin ds-input-state($state) {
+  @if $state == 'error' {
+    color: ds-color('danger');
+    border-color: ds-color('danger');
+    background-color: ds-color('neutral', '0');
+    outline-color: ds-color('danger');
+  } @else if $state == 'success' {
+    color: ds-color('success');
+    border-color: ds-color('success');
+    background-color: ds-color('neutral', '0');
+    outline-color: ds-color('success');
+  } @else if $state == 'disabled' {
+    cursor: not-allowed;
+    border-color: ds-color('neutral', '350');
+    opacity: 0.6;
+  }
+}

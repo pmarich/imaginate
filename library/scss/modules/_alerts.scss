@@ -9,35 +9,36 @@ you can just remove this stylesheet.
 
 ******************************************************************/
 
-
-
 // alerts and notices
 %alert {
-  margin: 10px;
-  padding: 5px 18px;
+  margin: ds-space('sm');
+  padding: ds-space('xs') ds-space('xl');
   border: 1px solid;
+  border-radius: ds-radius('sm');
+  color: ds-color('ink', 'strong');
 }
 
 .alert-help {
   @extend %alert;
-  border-color: darken($alert-yellow, 5%);
-  background: $alert-yellow;
+  border-color: ds-color('warning', 'contrast');
+  background: ds-color('warning', 'soft');
 }
 
 .alert-info {
   @extend %alert;
-  border-color: darken($blue, 5%);
-  background: $blue;
+  border-color: ds-color('info', 'contrast');
+  background: ds-color('info', 'soft');
+  color: ds-color('info', 'contrast');
 }
 
 .alert-error {
   @extend %alert;
-  border-color: darken($alert-red, 5%);
-  background: $alert-red;
+  border-color: ds-color('danger');
+  background: ds-color('danger', 'soft');
 }
 
 .alert-success {
   @extend %alert;
-  border-color: darken($alert-green, 5%);
-  background: $alert-green;
+  border-color: ds-color('success');
+  background: ds-color('success', 'soft');
 }

@@ -1,0 +1,23 @@
+// Breakpoint tokens
+// -----------------
+
+$ds-breakpoints: (
+  "mobile": 0,
+  "mobile-lg": 481px,
+  "tablet": 768px,
+  "desktop": 1030px,
+  "wide": 1240px
+);
+
+@function ds-breakpoint($token, $fallback: null) {
+  @if map-has-key($ds-breakpoints, $token) {
+    @return map-get($ds-breakpoints, $token);
+  }
+
+  @if $fallback != null {
+    @return $fallback;
+  }
+
+  @warn 'Breakpoint token `#{$token}` is not defined. Returning null.';
+  @return null;
+}
